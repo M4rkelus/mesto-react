@@ -1,8 +1,13 @@
-import React from "react";
-
-const PopupWithForm = ({ name, title, children, isOpen, onClose }) => {
+const PopupWithForm = ({
+  name,
+  title,
+  children,
+  isOpen,
+  onClose,
+  buttonText,
+}) => {
   return (
-    <div className={`popup popup_${name} ${isOpen ? "popup_opened" : ""}`}>
+    <div className={`popup popup_${name} ${isOpen && "popup_opened"}`}>
       <div className="popup__container">
         <h2 className="popup__title">{title}</h2>
         <form
@@ -11,6 +16,12 @@ const PopupWithForm = ({ name, title, children, isOpen, onClose }) => {
           noValidate
         >
           {children}
+          <input
+            className="popup__save-btn"
+            type="submit"
+            name="submit"
+            value={buttonText}
+          />
         </form>
         <button
           onClick={onClose}

@@ -1,8 +1,6 @@
-import React from "react";
-
 const ImagePopup = ({ onClose, card }) => {
   return (
-    <div className={`popup popup_preview ${card.isOpen ? "popup_opened" : ""}`}>
+    <div className={`popup popup_preview ${card.isOpen && "popup_opened"}`}>
       <div className="popup__wrapper">
         <figure className="popup__figure">
           <img className="popup__img" src={card.link} alt={card.name} />

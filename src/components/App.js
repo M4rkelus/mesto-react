@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -39,117 +39,86 @@ const App = () => {
         />
         <Footer />
         <PopupWithForm
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
           name="profile"
           title="Редактировать профиль"
-          children={
-            <>
-              <input
-                id="name-input"
-                className="popup__field popup__field_value_name"
-                type="text"
-                name="name"
-                placeholder="Имя"
-                minLength="2"
-                maxLength="40"
-                required
-              />
-              <span className="popup__input-error name-input-error"></span>
-              <input
-                id="job-input"
-                className="popup__field popup__field_value_job"
-                type="text"
-                name="job"
-                placeholder="Профессиональная деятельность"
-                minLength="2"
-                maxLength="200"
-                required
-              />
-              <span className="popup__input-error job-input-error"></span>
-              <input
-                className="popup__save-btn"
-                type="submit"
-                name="submit"
-                value="Сохранить"
-              />
-            </>
-          }
-        />
-        <PopupWithForm
-          isOpen={isAddPlacePopupOpen}
+          isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          buttonText="Сохранить"
+        >
+          <input
+            id="name-input"
+            className="popup__field popup__field_value_name"
+            type="text"
+            name="name"
+            placeholder="Имя"
+            minLength="2"
+            maxLength="40"
+            required
+          />
+          <span className="popup__input-error name-input-error"></span>
+          <input
+            id="job-input"
+            className="popup__field popup__field_value_job"
+            type="text"
+            name="job"
+            placeholder="Профессиональная деятельность"
+            minLength="2"
+            maxLength="200"
+            required
+          />
+          <span className="popup__input-error job-input-error"></span>
+        </PopupWithForm>
+        <PopupWithForm
           name="card"
           title="Новое место"
-          children={
-            <>
-              <input
-                id="card-name-input"
-                className="popup__field popup__field_value_card-name"
-                type="text"
-                name="name"
-                placeholder="Название"
-                minLength="2"
-                maxLength="30"
-                required
-              />
-              <span className="popup__input-error card-name-input-error"></span>
-              <input
-                id="link-input"
-                className="popup__field popup__field_value_card-link"
-                type="url"
-                name="link"
-                placeholder="Ссылка на картинку"
-                required
-              />
-              <span className="popup__input-error link-input-error"></span>
-              <input
-                className="popup__save-btn"
-                type="submit"
-                name="submit"
-                value="Создать"
-              />
-            </>
-          }
-        />
-        <PopupWithForm
-          isOpen={isEditAvatarPopupOpen}
+          isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
+          buttonText="Создать"
+        >
+          <input
+            id="card-name-input"
+            className="popup__field popup__field_value_card-name"
+            type="text"
+            name="name"
+            placeholder="Название"
+            minLength="2"
+            maxLength="30"
+            required
+          />
+          <span className="popup__input-error card-name-input-error"></span>
+          <input
+            id="link-input"
+            className="popup__field popup__field_value_card-link"
+            type="url"
+            name="link"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="popup__input-error link-input-error"></span>
+        </PopupWithForm>
+        <PopupWithForm
           name="avatar"
           title="Обновить аватар"
-          children={
-            <>
-              <input
-                id="avatar-link"
-                className="popup__field popup__field_avatar-link"
-                type="url"
-                name="link"
-                placeholder="Ссылка на аватар"
-                required
-              />
-              <span className="popup__input-error avatar-link-error"></span>
-              <input
-                className="popup__save-btn"
-                type="submit"
-                name="submit"
-                value="Сохранить"
-              />
-            </>
-          }
-        />
-        <PopupWithForm
-          isOpen={isRemovePlacePopupOpen}
+          isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
+          buttonText="Сохранить"
+        >
+          <input
+            id="avatar-link"
+            className="popup__field popup__field_avatar-link"
+            type="url"
+            name="link"
+            placeholder="Ссылка на аватар"
+            required
+          />
+          <span className="popup__input-error avatar-link-error"></span>
+        </PopupWithForm>
+        <PopupWithForm
           name="delete-confirm"
           title="Вы уверены?"
-          children={
-            <input
-              className="popup__save-btn"
-              type="submit"
-              name="submit"
-              value="Да"
-            />
-          }
+          isOpen={isRemovePlacePopupOpen}
+          onClose={closeAllPopups}
+          buttonText="Да"
         />
         <ImagePopup onClose={closeAllPopups} card={selectedCard} />
       </div>
