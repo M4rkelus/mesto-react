@@ -22,7 +22,7 @@ const Card = ({ card, onCardImage }) => {
             type="button"
             aria-label="Мне это любо"
           ></button>
-          <span className="card__like-counter">0</span>
+          <span className="card__like-counter">{card.likes.length}</span>
         </div>
       </div>
     </article>
