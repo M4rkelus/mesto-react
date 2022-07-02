@@ -46,7 +46,7 @@ class Api {
     }).then(this._getResponse);
   }
 
-  likeCard(isLiked, id) {
+  changeLikeCardStatus(id, isLiked) {
     return fetch(`${this._options.baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._options.headers,

@@ -33,6 +33,8 @@
 @import url(./blocks/card/__like-btn/card__like-btn.css);
 @import url(./blocks/card/__like-btn/_active/card__like-btn_active.css);
 @import url(./blocks/card/__delete-btn/card__delete-btn.css);
+@import url(./blocks/card/__delete-btn/_visible/card__delete-btn_visible.css);
+@import url(./blocks/card/__delete-btn/_hidden/card__delete-btn_hidden.css);
 
 /* Footer section*/
 @import url(./blocks/footer/footer.css);

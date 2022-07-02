@@ -4,6 +4,7 @@ const PopupWithForm = ({
   children,
   isOpen,
   onClose,
+  onSubmit,
   buttonText,
 }) => {
   return (
@@ -11,6 +12,7 @@ const PopupWithForm = ({
       <div className="popup__container">
         <h2 className="popup__title">{title}</h2>
         <form
+          onSubmit={onSubmit}
           className={`popup__form popup__form_${name}`}
           name={`${name}-form`}
           noValidate

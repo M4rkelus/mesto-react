@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Card from "./Card";
-import api from "../utils/api";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Main = ({ onEditProfile, onAddPlace, onEditAvatar, onCardImage }) => {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserData(), api.getInitialCards()])
-      .then(([user, initialCards]) => {
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setUserAvatar(user.avatar);
-        setCards(initialCards);
-      })
-      .catch((err) => console.error(`Что-то пошло не так: (${err})`));
-  }, []);
+const Main = ({
+  onEditProfile,
+  onAddPlace,
+  onEditAvatar,
+  onCardImage,
+  onCardLike,
+  onCardDelete,
+  cards,
+}) => {
+  const {
+    name: userName,
+    about: userDescription,
+    avatar: userAvatar,
+  } = useContext(CurrentUserContext);
 
   return (
     <main className="content">
@@ -50,7 +48,13 @@ const Main = ({ onEditProfile, onAddPlace, onEditAvatar, onCardImage }) => {
 
       <section className="elements" aria-label="Галерея">
         {cards.map((card) => (
-          <Card card={card} key={card._id} onCardImage={onCardImage} />
+          <Card
+            key={card._id}
+            card={card}
+            onCardImage={onCardImage}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
+          />
         ))}
       </section>
     </main>
